@@ -1,0 +1,61 @@
+﻿subject,grade,author,book,chapter,lesson,knowledge
+Toán,6,Cánh Diều,Toán 6,Hình học phẳng,"Điểm, Đường thẳng","1. Điểm  
+   Điểm là hình ảnh một dấu chấm nhỏ. Đặt tên bằng chữ cái in hoa A, B, C,… . Nếu không nói rõ thêm thì coi hai điểm là phân biệt. Một hình là tập hợp các điểm; có thể chỉ gồm một điểm. Có thể có các điểm trùng nhau được gọi chung.
+
+2. Đường thẳng  
+   Đường thẳng không giới hạn hai phía; có thể hình dung như một sợi chỉ căng thẳng để tạo đường thẳng. Biểu diễn trên hình bằng vạch thẳng và đặt tên bằng chữ cái in thường a, b, c,… .
+
+3. Mối quan hệ điểm – đường thẳng  
+   Nếu điểm A nằm trên đường thẳng d thì viết $A \in d$.  
+   Nếu điểm B không nằm trên đường thẳng d thì viết $B \notin d$.  
+   Có vô số điểm thuộc mỗi đường thẳng.
+
+4. Đường thẳng xác định bởi hai điểm  
+   Qua hai điểm A và B phân biệt, có **một và chỉ một** đường thẳng.  
+   Đường thẳng đó được gọi là AB hoặc BA.
+
+5. Thẳng hàng và vị trí điểm  
+   Ba điểm A, B, C thẳng hàng nếu cùng thuộc một đường thẳng.  
+   Ba điểm không thẳng hàng nếu không có đường thẳng nào chứa cả ba điểm.  
+   Trong ba điểm thẳng hàng, có một và chỉ một điểm nằm giữa hai điểm còn lại.  
+   Nếu B nằm giữa A và C thì A và C nằm cùng phía so với B; tương tự A và B cùng phía so với C; còn A và C nằm khác phía đối với trung điểm B.
+"
+Toán,6,Cánh Diều,Toán 6,Hình học phẳng,"Hai đường thẳng cắt nhau, Hai đường thẳng song song  ","1 Hai đường thẳng cắt nhau  
+  Khi hai đường thẳng chỉ có một điểm chung thì gọi là hai đường thẳng cắt nhau, điểm chung đó là giao điểm  
+  Ví dụ: đường thẳng x và đường thẳng y cắt nhau tại O (O là giao điểm của x và y)  
+
+2 Hai đường thẳng song song  
+  Khi hai đường thẳng không có điểm chung nào thì gọi là hai đường thẳng song song  
+  Kí hiệu: a // b hoặc b // a  
+
+3 Chú ý chung  
+  Nếu nói “hai đường thẳng” mà không nói thêm gì nữa thì hiểu là hai đường thẳng phân biệt (không trùng nhau)  
+
+4 Ví dụ minh họa thêm (dựa theo bài tập SGK – để hình dung)  
+  a) Vẽ đường thẳng GH cắt đường thẳng AB; giao điểm là M → GH cắt AB tại M  
+  b) Vẽ đường thẳng IK song song với đường thẳng AB → IK // AB  
+"
+Toán,6,Cánh Diều,Toán 6,Hình học phẳng,Đoạn thẳng,"I. Khái niệm đoạn thẳng  
+Đoạn thẳng AB là hình gồm điểm A, điểm B và tất cả các điểm nằm giữa chúng. Đoạn thẳng AB còn gọi là BA. Hai điểm A và B gọi là hai đầu mút của đoạn thẳng.  
+Nếu M thuộc đoạn AB thì M nằm giữa A và B. Ngược lại, nếu M nằm giữa A và B thì M thuộc đoạn AB.  
+
+II. Độ dài đoạn thẳng  
+Mỗi đoạn thẳng có một độ dài là một số dương.  
+Độ dài đoạn thẳng AB là khoảng cách giữa hai điểm A và B.  
+Nếu hai điểm trùng nhau thì độ dài của đoạn thẳng bằng 0.  
+
+III. So sánh đoạn thẳng  
+Hai đoạn thẳng AB và CD bằng nhau nếu AB = CD (hai đoạn có độ dài bằng nhau).  
+Viết AB > CD nếu đoạn AB dài hơn CD; viết AB < CD nếu AB ngắn hơn CD.  
+Nếu điểm M nằm giữa A và B thì $AM + MB = AB$. Ngược lại, nếu $AM + MB ≠ AB$ thì M không nằm giữa A và B.  
+Nếu điểm N nằm giữa M và B, và M nằm giữa A và B thì $AM + MN + NB = AB$.  
+
+IV. Trung điểm của đoạn thẳng  
+Giả sử I là trung điểm của đoạn thẳng AB. Khi đó:  
+I nằm giữa A và B và $IA = IB$.  
+Tương đương với điều kiện: $IA + IB = AB$ và $IA = IB$.  
+Do đó $IA = IB = \dfrac{1}{2}AB$.  
+
+V. Cách vẽ trung điểm  
+1. Dùng thước đo độ dài: ví dụ AB = 5 cm, đặt A trùng vạch 0, B trùng vạch 5; trung điểm là điểm tương ứng với vạch 2,5 cm trên thước.  
+2. Gấp giấy sao cho điểm B trùng với điểm A; giao điểm của nếp gấp với đoạn thẳng AB là trung điểm."
