@@ -1,6 +1,7 @@
 #%% LIB
 import sqlite3
 import pandas as pd
+pd.set_option('display.max_columns', None)
 from datetime import datetime
 import os
 
@@ -53,16 +54,15 @@ df_question_format = pd.read_csv('data_raw/question_format.csv')
 df_question_level = pd.read_csv('data_raw/question_level.csv')
 
 # INSERT DATA
-database_name = f"database_v{datetime.now().strftime('%Y%m%d')}.db"
-
-## Check if previous ver. exists => Delete if so
-if os.path.exists(database_name):
-    os.remove(database_name)
-    print(f"{database_name} has been deleted.")
-else:
-    print(f"{database_name} does not exist.")
+## Remove previous version
+database_pre_ver = [file for file in os.listdir() if '.db' in file]
+for file in database_pre_ver:
+    os.remove(file)
+    print(f"{file} has been deleted.")
 
 ## Create new database
+
+database_name = f"database_v{datetime.now().strftime('%Y%m%d')}.db"
 connection = sqlite3.connect(
     database=database_name,
     check_same_thread=False
