@@ -77,7 +77,12 @@ with col1:
     ### III. DỮ LIỆU
                 """)
     
-    st.write(f"Dữ liệu {subject} {grade} - bộ sách {book} sẽ được nhập tự động!")
+    st.multiselect(
+        "Chọn các bài học",
+        ["blank list"]
+        )
+    
+    # st.write(f"Dữ liệu {subject} {grade} - bộ sách {book} sẽ được nhập tự động!")
     if khbd != "theo mẫu riêng":
         st.write(f"KHBD {khbd} sẽ được nhập tự động!")
     
@@ -127,7 +132,11 @@ result_prompt +=  (
     
     )
 
-st.code(result_prompt)
+st.text_area(
+    label="Prompt:",
+    value=result_prompt,
+    height=(result_prompt.count("\n")+1)*25
+    )
     
    
 
