@@ -1,5 +1,22 @@
+#%% LIB
 import streamlit as st
+from data import SQLRepository
+import os
+import sqlite3
+from pathlib import Path
 
+#%% DATA
+
+BASE_DIR = Path(__file__).resolve().parent.parent  # Access base dir in streamlit
+database_name = str(list(BASE_DIR.glob('*.db'))[0])
+
+connection = sqlite3.connect(
+    database=database_name,
+    check_same_thread=False
+    )
+repo = SQLRepository(connection)
+
+#%% APP
 st.markdown("""
 # PROMPT TOOL
 
@@ -8,23 +25,24 @@ Thầy cô nhập các thông tin theo từng bước bên dưới.
 --- 
 """)
 
-            
+    #%%% USER INPUT
 col1, col2 = st.columns(2)
 with col1:
+    #----------------------------------------------------------
     st.markdown("""
     ### I. BỐI CẢNH
                 """)
     subject = st.selectbox(
         "Chọn môn học", 
-        ["Toán", "Văn", "Tiếng Anh", "Khoa học tự nhiên", "Lịch Sử", "Địa Lí"]
+        repo.get_subject_list()
         )
     grade = st.selectbox(
         "Chọn lớp", 
-        ["6", "7", "8", "9", "10", "11", "12"]
+        repo.get_grade_list()
         )
     book = st.selectbox(
         "Chọn bộ sách",
-        ["Cánh Diều", "Kết Nối Tri Thức", "Chân Trời Sáng Tạo"]
+        repo.get_author_list()
         )
     
     need_teaching_technique = st.checkbox(
@@ -36,24 +54,24 @@ with col1:
             label="Điền phương pháp giảng dạy"
             )
         
-    need_more_input = st.checkbox(
-        "Tôi có thêm thông tin",
+    need_more_context = st.checkbox(
+        "Tôi muốn nhập thêm thông tin",
         key="more_input"
         )
-    if need_more_input:
+    if need_more_context:
         additional_requirement = st.text_area(
             label="Điền thêm thông tin tại đây"
             ) 
      
 with col2:
-    
+    #----------------------------------------------------------
     st.markdown("""
     ### II. NHIỆM VỤ
                 """)
         
     task = st.radio(
         "Thầy cô muốn yêu cầu GenAI làm gì?", 
-        ["Tạo kế hoạch bài dạy", "Tạo câu hỏi luyện tập", "Tạo đề kiểm tra", "Khác"]
+        ["Tạo kế hoạch bài dạy", "Tạo câu hỏi luyện tập", "Tạo đề kiểm tra", "Nhiệm vụ khác"]
         )
     if task == "Tạo kế hoạch bài dạy":
         khbd = st.selectbox(
@@ -63,7 +81,7 @@ with col2:
         if khbd == "theo mẫu riêng":
             custom_khbd = st.text_area("Nhập KHBD tại đây")
         
-    if task == "Khác":
+    elif task == "Nhiệm vụ khác":
         custom_task = st.text_input("Điền nhiệm vụ của GenAI tại đây")
         
     
@@ -73,6 +91,7 @@ st.markdown("""
         
 col1, col2 = st.columns(2)
 with col1:
+    #----------------------------------------------------------
     st.markdown("""
     ### III. DỮ LIỆU
                 """)
@@ -83,11 +102,15 @@ with col1:
         )
     
     # st.write(f"Dữ liệu {subject} {grade} - bộ sách {book} sẽ được nhập tự động!")
-    if khbd != "theo mẫu riêng":
-        st.write(f"KHBD {khbd} sẽ được nhập tự động!")
+    try:
+        if khbd != "theo mẫu riêng":
+            st.write(f"KHBD {khbd} sẽ được nhập tự động!")
+    except:
+        pass
     
     
 with col2:
+    #----------------------------------------------------------
     st.markdown("""
     ### IV. KẾT QUẢ
                 """)
@@ -100,35 +123,39 @@ with col2:
         st.text_area("Nhập các bước AI cần thực hiện tại")
     
 
-
+    #%%% PROMPT OUTPUT
 st.markdown("""
 ---
 ### Kết quả Prompt
             """)
             
+#----------------------------------------------------------
+            
 result_prompt =  (
-    "#BỐI CẢNH\n" + 
-    f"Bạn là giáo viên {subject} {grade}. Bạn sử dụng bộ sách {book}. "
+    "#BỐI CẢNH" + 
+    f"\nBạn là giáo viên {subject} {grade}. Bạn sử dụng bộ sách {book}. "
     )
 
 if need_teaching_technique:
     result_prompt += f"Bạn ứng dụng phương pháp {teaching_technique} trong công việc."
     
-if need_more_input:
+if need_more_context:
     result_prompt += f"bạn cần lưu ý thêm rằng {additional_requirement}"
-    
+ 
+#----------------------------------------------------------
 result_prompt +=  (
-    "\n#NHIỆM VỤ\n" 
-    
-    )
-
-result_prompt +=  (
-    "\n#DỮ LIỆU\n" 
+    "\n\n#NHIỆM VỤ" +
+    f"\nNhiệm vụ của bạn là {task.lower()}."
     
     )
-
+#----------------------------------------------------------
 result_prompt +=  (
-    "\n#KẾT QUẢ\n" 
+    "\n\n#DỮ LIỆU\n" 
+    
+    )
+#----------------------------------------------------------
+result_prompt +=  (
+    "\n\n#KẾT QUẢ\n" 
     
     )
 
