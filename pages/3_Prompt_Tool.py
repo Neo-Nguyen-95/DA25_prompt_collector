@@ -141,23 +141,59 @@ if need_teaching_technique:
     
 if need_more_context:
     result_prompt += f"bạn cần lưu ý thêm rằng {additional_requirement}"
- 
+
+
+
+
+
+
+
+
+
+
+
 #----------------------------------------------------------
 result_prompt +=  (
     "\n\n#NHIỆM VỤ" +
     f"\nNhiệm vụ của bạn là {task.lower()}."
     
     )
+
+
+
+
+
+
+
+
+
+
 #----------------------------------------------------------
 result_prompt +=  (
     "\n\n#DỮ LIỆU\n" 
     
     )
+
+
+
+
+
+
+
+
+
+
 #----------------------------------------------------------
 result_prompt +=  (
     "\n\n#KẾT QUẢ\n" 
     
     )
+
+try:
+    if khbd == "theo công văn 5512/BGD":
+        ...
+except:
+    ...
 
 st.text_area(
     label="Prompt:",

@@ -100,8 +100,20 @@ class SQLRepository:
                 sql=query,
                 con=self.connection,
                 params=(subject, int(grade), author, lesson)
-                )['knowledge'].unique()[0]
-            
+                )['knowledge'][0]
+    
+    def get_cong_van(self, cong_van, section):
+        query = """
+            SELECT content
+            FROM CONG_VAN
+            WHERE cong_van=? AND section=?
+        """   
+        
+        return pd.read_sql(
+            sql=query,
+            con=self.connection,
+            params=(cong_van, section)
+            )['content'][0]
         
         
         
@@ -114,6 +126,7 @@ class SQLRepository:
 df_knowledge_CTGDPT2018 = pd.read_csv('data_raw/knowledge_CTGDPT2018.csv')
 df_question_format = pd.read_csv('data_raw/question_format.csv')
 df_question_level = pd.read_csv('data_raw/question_level.csv')
+df_cong_van = pd.read_csv('data_raw/cong_van.csv')
 
 # INSERT DATA
 ## Remove previous version
@@ -135,6 +148,7 @@ repo = SQLRepository(connection)
 repo.insert_table('KNOWLEDGE_CTGDPT2018', df_knowledge_CTGDPT2018)
 repo.insert_table('QUES_FORMAT', df_question_format)
 repo.insert_table('QUES_LEVEL', df_question_level)
+repo.insert_table('CONG_VAN', df_cong_van)
 
 # OVERVIEW
 repo.database_overview()
@@ -153,5 +167,6 @@ repo.get_author_list()
 
 repo.get_lesson_list('Toán', 6, 'Cánh Diều')
 repo.get_knowledge('Toán', 6, 'Cánh Diều', 'Đoạn thẳng')
+repo.get_cong_van('5512/BGDĐT-GDTrH', 'khung khbd')
 
-list(pd.read_sql(sql="SELECT subject FROM KNOWLEDGE_CTGDPT2018", con=connection)['subject'].unique())
+# list(pd.read_sql(sql="SELECT subject FROM KNOWLEDGE_CTGDPT2018", con=connection)['subject'].unique())
