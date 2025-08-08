@@ -1,7 +1,6 @@
 #%% I. LIB
 import streamlit as st
 from data import SQLRepository
-import os
 import sqlite3
 from pathlib import Path
 
@@ -108,7 +107,6 @@ with col1:
         repo.get_lesson_list(subject, grade, author)
         )
     
-    # st.write(f"Dữ liệu {subject} {grade} - bộ sách {author} sẽ được nhập tự động!")
     try:
         if khbd != "theo mẫu riêng":
             st.write(f"KHBD {khbd} sẽ được nhập tự động!")
@@ -163,27 +161,16 @@ if need_more_context:
 result_prompt +=  (
     "\n\n#NHIỆM VỤ" +
     f"\nNhiệm vụ của bạn là {task.lower()}."
-    
     )
-
-
-
-
-
-
-
 
 
 
         #%%%% 3.2.3 DATA OUTPUT
-result_prompt +=  (
-    "\n\n#DỮ LIỆU\n" 
-    
-    )
+result_prompt +=  ("\n\n#DỮ LIỆU")
 
 try:
     for lesson in lesson_list:
-        result_prompt += f"##Bài {lesson}:\n {repo.get_knowledge(subject, grade, author, lesson)}"
+        result_prompt += f"\n##Bài {lesson}:\n {repo.get_knowledge(subject, grade, author, lesson)}"
     
 except:
     pass
@@ -192,16 +179,13 @@ except:
 
 
         #%%%% 3.2.4 RESULT OUTPUT
-result_prompt +=  (
-    "\n\n#KẾT QUẢ\n" 
-    
-    )
+result_prompt +=  ("\n\n#KẾT QUẢ")
 
 try:
     if khbd == "theo công văn 5512/BGD":
-        result_prompt += f"Trả kết quả theo mẫu sau:\n{repo.get_cong_van('5512/BGDĐT-GDTrH', 'khung khbd')}"
+        result_prompt += f"\nTrả kết quả theo mẫu sau:\n{repo.get_cong_van('5512/BGDĐT-GDTrH', 'khung khbd')}"
     elif khbd == "theo công văn 2345/BGD":
-        result_prompt += f"Trả kết quả theo mẫu sau:\n{repo.get_cong_van('2345/BGDĐT-GDTH', 'khung khbd')}"
+        result_prompt += f"\nTrả kết quả theo mẫu sau:\n{repo.get_cong_van('2345/BGDĐT-GDTH', 'khung khbd')}"
 except:
     pass
 
