@@ -115,7 +115,30 @@ class SQLRepository:
             params=(cong_van, section)
             )['content'][0]
         
-        
+    def get_item_info(self):
+        return """*** Trắc nghiệm nhiều lựa chọn: Có 4 lựa chọn, học sinh cần chọn 1 đáp án đúng. Ví dụ: 
+Câu 1 (M1). Quốc gia nào sau đây có hơn 10.000 bãi biển?
+A. Úc (đúng)
+B. Anh
+C. Pháp
+D. Italia
+*** Trắc nghiệm đúng sai: Mỗi câu có 4 khẳng định, học sinh xét tính đúng sai của mỗi khẳng định. Không được thiết kế tất cả đúng hoặc tất cả sai. Ví dụ: 
+Câu 2 (M2). Vật rơi tự do gần bề mặt Trái Đất, bỏ qua ma sát:
+a) Vận tốc tăng đều theo thời gian.
+b) Gia tốc không đổi và bằng 9.8 m/s².
+c) Đường đi là đường cong.
+d) Trong chân không, tất cả vật rơi cùng gia tốc.
+Học sinh đánh dấu từng ý: Đúng/Sai
+*** Trắc nghiệm trả lời ngắn: HS viết nội dung ngắn gọn trả lời. Vị trí điền cần sử dụng kí hiệu ___. Câu dẫn ghi rõ dạng của số hoặc từ cần điền. Ví dụ: 
+Câu 3 (M3). Điền số tự nhiên thích hợp vào ô trống:
+Khi một chất từ dung dịch đậm đặc khuếch tán sang dung dịch loãng, hiện tượng gọi là __.
+        """
+    
+    def get_item_diff(self):
+        return """*** Mức 1: Nhận biết, nhắc lại hoặc mô tả được nội dung đã học và áp dụng trực tiếp để giải quyết một số tình huống, vấn đề quen thuộc trong học tập;
+*** Mức 2: Kết nối, sắp xếp được một số nội dung đã học để giải quyết vấn đề có nội dung tương tự;
+*** Mức 3: Vận dụng các nội dung đã học để giải quyết một số vấn đề mới hoặc đưa ra những phản hồi hợp lý trong học tập và cuộc sống.
+    """
         
         
         
@@ -124,8 +147,6 @@ class SQLRepository:
 
 # GET DATA
 df_knowledge_CTGDPT2018 = pd.read_csv('data_raw/knowledge_CTGDPT2018.csv')
-df_question_format = pd.read_csv('data_raw/question_format.csv')
-df_question_level = pd.read_csv('data_raw/question_level.csv')
 df_cong_van = pd.read_csv('data_raw/cong_van.csv')
 
 # INSERT DATA
@@ -146,8 +167,6 @@ connection = sqlite3.connect(
 repo = SQLRepository(connection)
 
 repo.insert_table('KNOWLEDGE_CTGDPT2018', df_knowledge_CTGDPT2018)
-repo.insert_table('QUES_FORMAT', df_question_format)
-repo.insert_table('QUES_LEVEL', df_question_level)
 repo.insert_table('CONG_VAN', df_cong_van)
 
 # OVERVIEW

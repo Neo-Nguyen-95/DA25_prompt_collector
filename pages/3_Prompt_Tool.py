@@ -77,7 +77,11 @@ with col2:
         
     task = st.radio(
         "Thầy cô muốn yêu cầu GenAI làm gì?", 
-        ["Tạo kế hoạch bài dạy", "Tạo câu hỏi luyện tập", "Tạo đề kiểm tra", "Nhiệm vụ khác"]
+        [
+            "Tạo kế hoạch bài dạy", 
+            "Tạo câu hỏi luyện tập", 
+            # "Tạo đề kiểm tra", 
+            "Nhiệm vụ khác"]
         )
     if task == "Tạo kế hoạch bài dạy":
         khbd = st.selectbox(
@@ -86,9 +90,20 @@ with col2:
             )
         if khbd == "theo mẫu riêng":
             custom_khbd = st.text_area("Nhập KHBD tại đây")
-        
+    
+    elif task == "Tạo câu hỏi luyện tập":
+        item_type_list = st.multiselect(
+            "Lựa chọn loại câu hỏi muốn thiết kế",
+            ["Trắc nghiệm nhiều lựa chọn (MC)",
+             "Trắc nghiệm đúng/sai (TF)",
+             "Trắc nghiệm trả lời ngắn (SA)"]
+            )
+        st.write("Số lượng mặc định là 2 câu/loại. Các câu hỏi đều ở mức M2. Bạn có thể sửa lại số lượng và độ khó trong prompt kết quả.")
+    
     elif task == "Nhiệm vụ khác":
         custom_task = st.text_input("Điền nhiệm vụ của GenAI tại đây")
+    
+    
         
     
 st.markdown("""
@@ -153,15 +168,18 @@ if need_more_context:
 
 
 
-
-
-
-
         #%%%% 3.2.2 OBJECTIVE OUTPUT
 result_prompt +=  (
     "\n\n#NHIỆM VỤ" +
-    f"\nNhiệm vụ của bạn là {task.lower()}."
+    f"\nNhiệm vụ của bạn là {task.lower()}. Sử dụng thông tin trong phần #DỮ LIỆU. Kết quả trả ra cần tuân theo các bước được đề cập trong mục #KẾT QUẢ"
     )
+
+if task == "Tạo câu hỏi luyện tập":
+    result_prompt += (
+        "\nBạn sẽ thiết kế các dạng câu hỏi sau:"
+        )
+    for item_type in item_type_list:
+        result_prompt += f"\n* 2 câu {item_type} ở mức M2"
 
 
 
@@ -170,16 +188,21 @@ result_prompt +=  ("\n\n#DỮ LIỆU")
 
 try:
     for lesson in lesson_list:
-        result_prompt += f"\n##Bài {lesson}:\n {repo.get_knowledge(subject, grade, author, lesson)}"
+        result_prompt += f"\n##KIẾN THỨC {lesson}:\n {repo.get_knowledge(subject, grade, author, lesson)}"
     
 except:
     pass
 
+if task == "Tạo câu hỏi luyện tập":
+    result_prompt += (
+        f"\n##HÌNH THỨC CÁC LOẠI CÂU HỎI:\n{repo.get_item_info()}" + 
+        f"\n##MỨC ĐỘ CÁC LOẠI CÂU HỎI:\n{repo.get_item_diff()}"
+        )
 
 
 
         #%%%% 3.2.4 RESULT OUTPUT
-result_prompt +=  ("\n\n#KẾT QUẢ")
+result_prompt +=  ("\n\n#KẾT QUẢ\nThực hiện theo #NHIỆM VỤ đã yêu cầu.")
 
 try:
     if khbd == "theo công văn 5512/BGD":
