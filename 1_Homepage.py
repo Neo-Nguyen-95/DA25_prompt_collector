@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 st.set_page_config(
     page_title="Prompt For Education",
     page_icon="😉"
@@ -20,6 +21,28 @@ st.markdown("""
 
 ---
             """)
+            
+            
+
+# Styled anchor that looks like a button
+st.markdown(
+    """
+Thầy cô có thể cùng tham gia đóng góp kho kiến thức cho AI tại đây. Tôi sẽ cố gắng cập nhật mỗi ngày để lần tới các thầy cô có thể sử dụng lại kho kiến thức mà không cần phải lưu trữ ở nhiều nơi.
+    
+<a href="https://streamlit.io" target="_blank">
+    <button style="padding:0.6rem 1rem; border-radius:8px;">
+        Đóng góp tại đây ↗
+    </button>
+</a>
+    
+---
+    """,
+    unsafe_allow_html=True
+)
+
+          
+            
+            
 
 col1, col2 = st.columns([1, 3])
 with col1:
