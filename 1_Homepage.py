@@ -29,7 +29,7 @@ st.markdown(
     """
 Thầy cô có thể cùng tham gia đóng góp kho kiến thức cho AI tại đây. Tôi sẽ cố gắng cập nhật mỗi ngày để lần tới các thầy cô có thể sử dụng lại kho kiến thức mà không cần phải lưu trữ ở nhiều nơi.
     
-<a href="https://streamlit.io" target="_blank">
+<a href="https://forms.gle/tJv8av3FkSRhSUyS9" target="_blank">
     <button style="padding:0.6rem 1rem; border-radius:8px;">
         Đóng góp tại đây ↗
     </button>
