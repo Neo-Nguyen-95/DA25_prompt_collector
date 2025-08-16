@@ -38,7 +38,11 @@ Thể hiện cấu trúc câu trả lời.
 
 #%% CHATBOT
 
-st.markdown("# PROMPT CHATBOT")
+st.markdown("""
+            # 🤖 PROMPT CHATBOT
+            
+            Chatbot hỗ trợ thầy cô trong quá trình tạo prompt.
+            """)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []

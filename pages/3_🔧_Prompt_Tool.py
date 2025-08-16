@@ -17,7 +17,7 @@ repo = SQLRepository(connection)
 
 #%% III. APP
 st.markdown("""
-# PROMPT TOOL
+# 🔧 PROMPT TOOL
 
 Thầy cô nhập các thông tin theo từng bước bên dưới.
 
