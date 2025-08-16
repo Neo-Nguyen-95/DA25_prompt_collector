@@ -47,7 +47,9 @@ st.markdown("""
             """)
 
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Xin chào 👋! Tôi là trợ lý hỗ trợ thầy cô tạo prompt. Thầy cô dạy hãy cho tôi thông tin về môn học, lớp, và nhiệm vụ, tôi sẽ tư vấn cách tạo prompt cho thầy cô."}
+        ]
 
 # Display the conversation history
 for message in st.session_state.messages:
@@ -74,7 +76,9 @@ if prompt := st.chat_input("..."):
         
         response = st.write_stream(stream)
         
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append(
+        {"role": "assistant", "content": response}
+        )
         
         
     
