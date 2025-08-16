@@ -1,7 +1,7 @@
 #%% LIB
 import streamlit as st
 # from dotenv import load_dotenv
-import os
+# import os
 from openai import OpenAI
 
 #%% SYSTEM SET-UP
