@@ -1,10 +1,21 @@
 import streamlit as st
 
-
 st.set_page_config(
-    page_title="Prompt For Education",
-    page_icon="😉"
+    page_title="Prompt For Education"
     )
+
+
+with st.sidebar:
+    st.markdown("""
+**About me**
+
+Xin chào, tôi là Neo. 
+
+Khoa học dữ liệu với tôi không chỉ là công việc mà còn là niềm vui. 
+
+Bạn có thể tìm hiểu thêm về tôi và công việc tôi đang làm tại [LinkedIn cá nhân](https://www.linkedin.com/in/viet-dung-nguyen-87809311a/) này nhé. Hi hi!
+                """, unsafe_allow_html=True)
+                
 
 st.title("ỨNG DỤNG HỖ TRỢ GIAO TIẾP HIỆU QUẢ VỚI GENAI DÀNH CHO GIÁO VIÊN")
 
@@ -21,24 +32,13 @@ st.markdown("""
 
 ---
             """)
-   
-            
 
-col1, col2 = st.columns([1, 3])
-with col1:
-    st.markdown("""
-**About me**
-
-Xin chào, tôi là Neo. Khoa học dữ liệu với tôi không chỉ là công việc mà còn là niềm vui. Bạn có thể tìm hiểu thêm về tôi và công việc tôi đang làm tại LinkedIn cá nhân này nhé. Hi hi!
-                """)
-    
-with col2:
-    st.markdown("""
+st.markdown("""
 **About the project & its story**
 
 Trong một lần đi tập huấn giáo viên về sử dụng GenAI hiệu quả, tôi có cung cấp cho các thầy cô một prompt khá chi tiết, đầy đủ, giúp GenAI của các thầy cô trả lời đúng theo nhu cầu của mình. Tuy nhiên, nhiều thầy cô thắc mắc với tôi rằng "Prompt quá dài, quá khó nhớ, và trông khá khó hiểu" hay "Viết xong prompt này thì thà tôi tự làm còn hơn". Tức là kể cả khi có người hướng dẫn, nhiều thầy cô vẫn cảm thấy khó khăn để có cái nhìn đa chiều để có thể propmt hiệu quả, chưa kể nhiều thầy cô khác không được tiếp nhận nhiều tới các khoá học về AI.
 
-Vậy nên tôi quyết định tạo ra app này để hỗ trợ các thầy cô tạo được thói quen prompt với đầy đủ các thành phần. Khi thầy cô tự tin vào năng lực prompt của mình thì app này có thể sẽ không cần tới nữa.
+Vậy nên tôi quyết định tạo ra app này để hỗ trợ các thầy cô tạo được thói quen prompt với đầy đủ các thành phần. Khi thầy cô tự tin vào năng lực prompt của mình thì app này chỉ còn là kho dữ liệu để thầy cô khai thác và sử dụng cho prompt của mình mà thôi.
 
                 """)
                 
