@@ -19,6 +19,7 @@ st.markdown("""
 st.markdown("""
 - [MassiveMark Playground](https://www.bibcit.com/vi/massivemark) - Chuyển text từ GenAI thành văn bản Word (hỗ trợ định dạng công thức toán học)
 - [Perplexity AI](https://www.perplexity.ai/) – Công cụ tìm kiếm AI có trích dẫn nguồn (miễn phí tính năng Search cơ bản, đảm bảo thông tin kiến thức cập nhật)
+- [Suno AI](https://suno.com/) - Cho phép tạo vài bản nhạc mỗi ngày bằng AI, thích hợp cho các hoạt động khởi động của lớp học.
 - [Canva for Education](https://www.canva.com/education/) – Thiết kế slide và tài liệu giảng dạy
 """)
 
