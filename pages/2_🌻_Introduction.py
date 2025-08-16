@@ -1,8 +1,13 @@
 import streamlit as st
 
-st.markdown("""
-# 🌻 Giới thiệu về GenAI
+st.markdown("""# 🌻 Giới thiệu về GenAI""")
 
+st.image(
+    "pages/materials/gen-ai-image.png",
+    use_column_width=True
+    )
+
+st.markdown("""
 ### GenAI là gì?
 GenAI (Generative AI – Trí tuệ nhân tạo sinh sinh) là công nghệ có khả năng tạo ra nội dung mới như văn bản, hình ảnh, âm nhạc hoặc bài giảng dựa trên dữ liệu đã được huấn luyện. 
 Thay vì chỉ đưa ra câu trả lời có/không, GenAI có thể sáng tạo, mô phỏng phong cách viết, và đưa ra gợi ý phù hợp với ngữ cảnh.
