@@ -1,12 +1,15 @@
 #%% LIB
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 from openai import OpenAI
 
 #%% SYSTEM SET-UP
-load_dotenv()
-api_key = os.getenv("SECRETE_KEY")
+# load_dotenv()
+# api_key = os.getenv("SECRETE_KEY")
+api_key = st.secrets["SECRETE_KEY"]
+
+
 client = OpenAI(api_key = api_key)
 
 if "openai_model" not in st.session_state:
