@@ -19,10 +19,26 @@ repo = SQLRepository(connection)
 st.markdown("""
 # 🔧 PROMPT TOOL
 
-Thầy cô nhập các thông tin theo từng bước bên dưới.
+""")
+
+# Styled anchor that looks like a button
+st.markdown(
+    """
+Thầy cô có thể cùng tham gia đóng góp kho kiến thức cho AI tại đây.
+    
+<a href="https://forms.gle/tJv8av3FkSRhSUyS9" target="_blank">
+    <button style="padding:0.6rem 1rem; border-radius:8px; margin-bottom: 20px">
+        ĐÓNG GÓP NGAY ↗
+    </button>
+</a>
+
+Để sử dụng tool, thầy cô hãy nhập các thông tin theo từng bước bên dưới.
 
 --- 
-""")
+    """,
+    unsafe_allow_html=True
+)
+
 
     #%%% 3.1 USER INPUT
 col1, col2 = st.columns(2)

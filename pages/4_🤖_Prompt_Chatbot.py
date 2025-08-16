@@ -42,6 +42,8 @@ st.markdown("""
             # 🤖 PROMPT CHATBOT
             
             Chatbot hỗ trợ thầy cô trong quá trình tạo prompt.
+            
+            ---
             """)
 
 if "messages" not in st.session_state:

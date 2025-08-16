@@ -1,6 +1,13 @@
 import streamlit as st
 
-st.markdown("""# 🌻 Giới thiệu về GenAI""")
+st.markdown("""
+            # 🌻 Giới thiệu về GenAI
+            
+            Giúp các thầy cô hiểu hơn về GenAI.
+            
+            ---
+            
+            """)
 
 st.image(
     "pages/materials/gen-ai-image.png",
