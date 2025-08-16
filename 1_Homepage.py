@@ -28,7 +28,7 @@ st.markdown("""
 
 2. :green[**Prompt Tool**]: Chứa các bộ prompt mẫu cho từng cấu phần của một prompt đầy đủ. Thầy cô chỉ cần chọn từng cấu phần để tự xây dựng thành prompt riêng của mình. Đặc biệt, phần kiến thức phổ thông được cập nhật theo CTGDPT 2018 được tạo nên bởi cộng đồng giáo viên và tôi. Tất cả cấu phần này đều ở định dạng text, các thầy cô có thể copy & paste dễ dàng khi chat với GenAI.
 
-3. :orange[**Chatbot Agent**]: Hỗ trợ giải đáp thắc mắc của thầy cô xung quanh chủ đề giao tiếp với GenAI.
+3. :orange[**Chatbot Agent**]: Hỗ trợ thầy cô tạo prompt theo đúng mẫu đầy đủ các thành .
 
 4. :violet[**Helpful Tools**]: Tổng hợp các công cụ mà thầy cô có thể sử dụng để kết hợp với GenAI cho công tác chuyên môn của mình.
 
