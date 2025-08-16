@@ -4,7 +4,7 @@ st.markdown("""# 🌻 Giới thiệu về GenAI""")
 
 st.image(
     "pages/materials/gen-ai-image.png",
-    use_column_width=True
+    use_container_width=True
     )
 
 st.markdown("""
