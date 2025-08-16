@@ -30,6 +30,8 @@ st.markdown("""
 
 3. :orange[**Chatbot Agent**]: Hỗ trợ giải đáp thắc mắc của thầy cô xung quanh chủ đề giao tiếp với GenAI.
 
+4. :violet[**Helpful Tools**]: Tổng hợp các công cụ mà thầy cô có thể sử dụng để kết hợp với GenAI cho công tác chuyên môn của mình.
+
 ---
             """)
 
