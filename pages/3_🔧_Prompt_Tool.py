@@ -45,7 +45,7 @@ Thầy cô có thể cùng tham gia đóng góp kho kiến thức cho AI tại �
 
 
     #%%% 3.1 USER INPUT
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1, 2])
 with col1:
         #%%%% 3.1.1 CONTEXT
     st.markdown("""
