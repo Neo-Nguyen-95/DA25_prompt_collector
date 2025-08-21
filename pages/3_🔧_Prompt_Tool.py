@@ -233,7 +233,7 @@ with col2:
     st.text_area(
         label="Prompt:",
         value=result_prompt,
-        height=(result_prompt.count("\n")+1)*50
+        height=(result_prompt.count("\n")+1)*35
         )
     
    
