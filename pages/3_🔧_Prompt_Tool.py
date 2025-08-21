@@ -87,10 +87,13 @@ with col1:
     if need_more_context:
         additional_requirement = st.text_area(
             label="Điền thêm thông tin tại đây"
-            ) 
+            )
+        
+    st.markdown("""
+    ---
+                """) 
      
-with col2:
-        #%%%% 3.1.2 OBJECTIVE
+    #%%%% 3.1.2 OBJECTIVE
     st.markdown("""
     ### II. NHIỆM VỤ
                 """)
@@ -124,19 +127,15 @@ with col2:
         custom_task = st.text_input("Điền nhiệm vụ của GenAI tại đây")
     
     
-        
-    
-st.markdown("""
----
-            """)    
-        
-col1, col2 = st.columns(2)
-with col1:
-        #%%%% 3.1.3 DATA
+    st.markdown("""
+    ---
+                """)   
+                
+    #%%%% 3.1.3 DATA
     st.markdown("""
     ### III. DỮ LIỆU
-                """)
-    
+                 """)
+     
     lesson_list = st.multiselect(
         "Chọn các bài học",
         repo.get_lesson_list(subject, grade, author)
@@ -148,9 +147,12 @@ with col1:
     except:
         pass
     
-    
-with col2:
-        #%%%% 3.1.4 RESULT
+    st.markdown("""
+    ---
+                """) 
+     
+     
+    #%%%% 3.1.4 RESULT
     st.markdown("""
     ### IV. KẾT QUẢ
                 """)
@@ -161,82 +163,84 @@ with col2:
     have_output_format = st.checkbox("Tôi muốn thiết lập từng bước cho AI")
     if have_output_format:
         st.text_area("Nhập các bước AI cần thực hiện tại")
-    
+        
+        
+with col2:
 
     #%%% 3.2 PROMPT OUTPUT
-st.markdown("""
----
-### Kết quả Prompt
-            """)
-            
-        #%%%% 3.2.1 CONTEXT OUTPUT
-            
-result_prompt =  (
-    "#BỐI CẢNH" + 
-    f"\nBạn là giáo viên {subject} {grade}. Bạn sử dụng bộ sách {author}. Bạn dạy học theo chương trình giáo dục phổ thông 2018, ở cấp {school}."
-    )
-
-if need_teaching_technique:
-    result_prompt += f"Bạn ứng dụng phương pháp {teaching_technique} trong công việc."
-    
-if need_more_context:
-    result_prompt += f"bạn cần lưu ý thêm rằng {additional_requirement}"
-
-
-
-
-
-
-
-        #%%%% 3.2.2 OBJECTIVE OUTPUT
-result_prompt +=  (
-    "\n\n#NHIỆM VỤ" +
-    f"\nNhiệm vụ của bạn là {task.lower()}. Sử dụng thông tin trong phần #DỮ LIỆU. Kết quả trả ra cần tuân theo các bước được đề cập trong mục #KẾT QUẢ"
-    )
-
-if task == "Tạo câu hỏi luyện tập":
-    result_prompt += (
-        "\nBạn sẽ thiết kế các dạng câu hỏi sau:"
+    st.markdown("""
+    ---
+    ### Kết quả Prompt
+                """)
+                
+            #%%%% 3.2.1 CONTEXT OUTPUT
+                
+    result_prompt =  (
+        "#BỐI CẢNH" + 
+        f"\nBạn là giáo viên {subject} {grade}. Bạn sử dụng bộ sách {author}. Bạn dạy học theo chương trình giáo dục phổ thông 2018, ở cấp {school}."
         )
-    for item_type in item_type_list:
-        result_prompt += f"\n* 2 câu {item_type} ở mức M2"
-
-
-
-        #%%%% 3.2.3 DATA OUTPUT
-result_prompt +=  ("\n\n#DỮ LIỆU")
-
-try:
-    for lesson in lesson_list:
-        result_prompt += f"\n##KIẾN THỨC {lesson}:\n {repo.get_knowledge(subject, grade, author, lesson)}"
     
-except:
-    pass
-
-if task == "Tạo câu hỏi luyện tập":
-    result_prompt += (
-        f"\n##HÌNH THỨC CÁC LOẠI CÂU HỎI:\n{repo.get_item_info()}" + 
-        f"\n##MỨC ĐỘ CÁC LOẠI CÂU HỎI:\n{repo.get_item_diff()}"
+    if need_teaching_technique:
+        result_prompt += f"Bạn ứng dụng phương pháp {teaching_technique} trong công việc."
+        
+    if need_more_context:
+        result_prompt += f"bạn cần lưu ý thêm rằng {additional_requirement}"
+    
+    
+    
+    
+    
+    
+    
+            #%%%% 3.2.2 OBJECTIVE OUTPUT
+    result_prompt +=  (
+        "\n\n#NHIỆM VỤ" +
+        f"\nNhiệm vụ của bạn là {task.lower()}. Sử dụng thông tin trong phần #DỮ LIỆU. Kết quả trả ra cần tuân theo các bước được đề cập trong mục #KẾT QUẢ"
         )
-
-
-
-        #%%%% 3.2.4 RESULT OUTPUT
-result_prompt +=  ("\n\n#KẾT QUẢ\nThực hiện theo #NHIỆM VỤ đã yêu cầu.")
-
-try:
-    if khbd == "theo công văn 5512/BGD":
-        result_prompt += f"\nTrả kết quả theo mẫu sau:\n{repo.get_cong_van('5512/BGDĐT-GDTrH', 'khung khbd')}"
-    elif khbd == "theo công văn 2345/BGD":
-        result_prompt += f"\nTrả kết quả theo mẫu sau:\n{repo.get_cong_van('2345/BGDĐT-GDTH', 'khung khbd')}"
-except:
-    pass
-
-st.text_area(
-    label="Prompt:",
-    value=result_prompt,
-    height=(result_prompt.count("\n")+1)*25
-    )
+    
+    if task == "Tạo câu hỏi luyện tập":
+        result_prompt += (
+            "\nBạn sẽ thiết kế các dạng câu hỏi sau:"
+            )
+        for item_type in item_type_list:
+            result_prompt += f"\n* 2 câu {item_type} ở mức M2"
+    
+    
+    
+            #%%%% 3.2.3 DATA OUTPUT
+    result_prompt +=  ("\n\n#DỮ LIỆU")
+    
+    try:
+        for lesson in lesson_list:
+            result_prompt += f"\n##KIẾN THỨC {lesson}:\n {repo.get_knowledge(subject, grade, author, lesson)}"
+        
+    except:
+        pass
+    
+    if task == "Tạo câu hỏi luyện tập":
+        result_prompt += (
+            f"\n##HÌNH THỨC CÁC LOẠI CÂU HỎI:\n{repo.get_item_info()}" + 
+            f"\n##MỨC ĐỘ CÁC LOẠI CÂU HỎI:\n{repo.get_item_diff()}"
+            )
+    
+    
+    
+            #%%%% 3.2.4 RESULT OUTPUT
+    result_prompt +=  ("\n\n#KẾT QUẢ\nThực hiện theo #NHIỆM VỤ đã yêu cầu.")
+    
+    try:
+        if khbd == "theo công văn 5512/BGD":
+            result_prompt += f"\nTrả kết quả theo mẫu sau:\n{repo.get_cong_van('5512/BGDĐT-GDTrH', 'khung khbd')}"
+        elif khbd == "theo công văn 2345/BGD":
+            result_prompt += f"\nTrả kết quả theo mẫu sau:\n{repo.get_cong_van('2345/BGDĐT-GDTH', 'khung khbd')}"
+    except:
+        pass
+    
+    st.text_area(
+        label="Prompt:",
+        value=result_prompt,
+        height=(result_prompt.count("\n")+1)*25
+        )
     
    
 
