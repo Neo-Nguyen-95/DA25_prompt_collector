@@ -169,7 +169,6 @@ with col2:
 
     #%%% 3.2 PROMPT OUTPUT
     st.markdown("""
-    ---
     ### Kết quả Prompt
                 """)
                 
@@ -186,12 +185,7 @@ with col2:
     if need_more_context:
         result_prompt += f"bạn cần lưu ý thêm rằng {additional_requirement}"
     
-    
-    
-    
-    
-    
-    
+  
             #%%%% 3.2.2 OBJECTIVE OUTPUT
     result_prompt +=  (
         "\n\n#NHIỆM VỤ" +
