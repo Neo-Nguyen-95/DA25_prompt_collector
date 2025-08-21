@@ -9,14 +9,10 @@ st.markdown("""
             
             """)
 
-st.markdown(
-    """
-    <div style="text-align: center;">
-        <img src="pages/materials/gen-ai-image.png" width="300">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.image(
+    "pages/materials/gen-ai-image.png",
+    width=300
+    )
 
 st.markdown("""
 ### GenAI là gì?
