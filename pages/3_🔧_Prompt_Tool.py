@@ -16,6 +16,10 @@ connection = sqlite3.connect(
 repo = SQLRepository(connection)
 
 #%% III. APP
+st.set_page_config(
+    layout="wide"
+    )
+
 st.markdown("""
 # 🔧 PROMPT TOOL
 
