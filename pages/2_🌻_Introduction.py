@@ -11,7 +11,7 @@ st.markdown("""
 
 st.image(
     "pages/materials/gen-ai-image.png",
-    use_container_width=True
+    width=300
     )
 
 st.markdown("""
